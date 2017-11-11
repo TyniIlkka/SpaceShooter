@@ -29,6 +29,8 @@ namespace SpaceShooter
 
 		private int _currentLives;
 
+        public int CurrentHealth { get; private set; }
+
 		public int CurrentScore { get; private set; }
 
 		public int CurrentLives
@@ -84,5 +86,11 @@ namespace SpaceShooter
 		{
 			CurrentScore += amount;
 		}
+
+        public void SetCurrentHealth(int healthAmount)
+        {
+            CurrentHealth = healthAmount;
+            Debug.Log("Ehkataallajo" + CurrentHealth);
+        }
 	}
 }

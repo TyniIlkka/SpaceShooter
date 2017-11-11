@@ -7,14 +7,15 @@ namespace SpaceShooter
 		[SerializeField] private int _initialHealth;
 		[SerializeField] private int _minHealth;
 		[SerializeField] private int _maxHealth;
-        [SerializeField] private int _currentHealth;
+
+		[SerializeField] private int _currentHealth;
 		private bool _isImmortal = false;
 
 		public int CurrentHealth
 		{
 			get
 			{
-				return _currentHealth;
+                return _currentHealth;
 			}
 			private set
 			{

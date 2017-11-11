@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace SpaceShooter
 {
-	public class PlayerSpaceShip : SpaceShipBase
+	public class PlayerSpaceShip : SpaceShipBase, IHealReceiver
 	{
 		public const string HorizontalAxis = "Horizontal";
 		public const string VerticalAxis = "Vertical";
 		public const string FireButtonName = "Fire1";
 
-		[SerializeField]
+        private int health;
+        [SerializeField]
+        private Health _playerHealth;
+
+        [SerializeField]
 		private float _immortalTime = 1;
 
 		private float _blinkInterval = 0.1f;
@@ -28,11 +33,11 @@ namespace SpaceShooter
 			return new Vector3(horizontalInput, verticalInput);
 		}
 
-		protected override void Update()
+        protected override void Update()
 		{
-			base.Update();
+			base.Update();            
 
-			if(Input.GetButton(FireButtonName))
+            if (Input.GetButton(FireButtonName))
 			{
 				Shoot();
 			}
@@ -82,5 +87,11 @@ namespace SpaceShooter
 
 			Health.SetImmortal(false);
 		}
-	}
+
+        public void TakeHeal(int amount)
+        {
+            Health.IncreaseHealth(amount);
+            AsetaCurrentHealth();
+        }
+    }
 }

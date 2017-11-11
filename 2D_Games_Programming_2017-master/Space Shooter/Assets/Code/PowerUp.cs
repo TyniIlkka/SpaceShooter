@@ -2,50 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpaceShooter { 
-
-    public class PowerUp : PlayerSpaceShip, IHealProvider {
+namespace SpaceShooter {
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class PowerUp : MonoBehaviour, IHealProvider {
 
 
         [SerializeField] private int healPower = 50;
+        [SerializeField] private int deSpawn = 5;
+
         public Health health;
         public PlayerSpaceShip player;
 
-        protected override void Awake()
-        {
-            base.Awake();
-            health = player.GetComponent<Health>();
-        }
 
-        // Use this for initialization
-        void Start () {
-		
-	    }
+        private Collider2D playerCollider;
+        private Rigidbody2D _rigidbody;
+
+        private void Awake()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+
+            if (_rigidbody == null)
+            {
+                Debug.LogError("No Rigidbody2D component was found from the GameObject");
+            }
+        }
 	
 	    // Update is called once per frame
 	    void Update () {
-		
-	    }
+            Destroy(gameObject, deSpawn);
+        }
 
         protected void OnTriggerEnter2D(Collider2D other)
         {
-            if (true)
+            IHealReceiver healReceiver = other.GetComponent<IHealReceiver>();
+            if (healReceiver != null)
             {
-                IHealReceiver damageReceiver = other.GetComponent<IHealReceiver>();
-                if (damageReceiver != null)
-                {
-                    Debug.Log("Hit a damage receiver.");
-                    damageReceiver.TakeHeal(GetHeal());
-                  
+                Debug.Log("Hit a heal receiver.");
+                healReceiver.TakeHeal(GetHeal());
+                Destroy(gameObject);
                     
-                }
-                //TODO: Add to GameOpjectPool
-                /*if (!_powerUp.DisposePowerUp(this))
-                {
-                    Debug.LogError("Could not return the projectile back to pool!");
-                    Destroy(gameObject);
-                }*/
             }
+            //TODO: Add to GameOpjectPool
+            /*if (!_powerUp.DisposePowerUp(this))
+            {
+                Debug.LogError("Could not return the projectile back to pool!");
+                Destroy(gameObject);
+            }*/
+            
         }
 
         public int GetHeal()

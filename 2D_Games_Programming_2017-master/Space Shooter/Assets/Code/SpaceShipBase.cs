@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SpaceShooter
 {
 	[RequireComponent(typeof(IHealth))]
-	public abstract class SpaceShipBase : MonoBehaviour, IDamageReceiver, IHealReceiver
+	public abstract class SpaceShipBase : MonoBehaviour, IDamageReceiver
 	{
 		public enum Type
 		{
@@ -93,21 +93,26 @@ namespace SpaceShooter
 		public void TakeDamage(int amount)
 		{
 			Health.DecreaseHealth(amount);
+            
+            {
+                AsetaCurrentHealth();
+            }
 
-			if (Health.IsDead)
+            if (Health.IsDead)
 			{
 				Die();
 			}
 		}
 
-        public void TakeHeal(int amount)
-        {
-            Health.IncreaseHealth(amount);
-        }
-
 		protected virtual void Die()
 		{
 			Destroy(gameObject);
 		}
-	}
+
+        public void AsetaCurrentHealth()
+        {
+            Debug.Log("TanhetkinenHP" + Health.CurrentHealth);
+            GameManager.Instance.SetCurrentHealth(Health.CurrentHealth);
+        }
+    }
 }
