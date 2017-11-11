@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SpaceShooter
 {
 	[RequireComponent(typeof(IHealth))]
-	public abstract class SpaceShipBase : MonoBehaviour, IDamageReceiver
+	public abstract class SpaceShipBase : MonoBehaviour, IDamageReceiver, IHealReceiver
 	{
 		public enum Type
 		{
@@ -99,6 +99,11 @@ namespace SpaceShooter
 				Die();
 			}
 		}
+
+        public void TakeHeal(int amount)
+        {
+            Health.IncreaseHealth(amount);
+        }
 
 		protected virtual void Die()
 		{
