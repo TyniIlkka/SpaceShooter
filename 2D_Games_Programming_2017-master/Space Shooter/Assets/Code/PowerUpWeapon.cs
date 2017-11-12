@@ -37,7 +37,7 @@ namespace SpaceShooter {
                 }
                 if (specialWeapon1.isSpecialWeapon == true || specialWeapon2.isSpecialWeapon == true)
                 {
-                    specialWeapon1.WeaponActivate(true);
+                    specialWeapon1.activetedWeapons = true;
                     specialWeapon2.WeaponActivate(true);
                     Debug.Log("SpecialWeapons should be Activated!");
                 }

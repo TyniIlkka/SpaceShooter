@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deSpawn: 5
   player: {fileID: 114535164535761890, guid: 6e9c80f559a6431478abb7ce1eac4ab6, type: 2}
-  specialWeapon1: {fileID: 114087318858802220, guid: 6e9c80f559a6431478abb7ce1eac4ab6,
+  specialWeapon1: {fileID: 114905018720839750, guid: 6e9c80f559a6431478abb7ce1eac4ab6,
     type: 2}
   specialWeapon2: {fileID: 114858181690594696, guid: 6e9c80f559a6431478abb7ce1eac4ab6,
     type: 2}

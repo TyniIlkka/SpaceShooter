@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4300815542599576}
-  - component: {fileID: 114087318858802220}
+  - component: {fileID: 114905018720839750}
   m_Layer: 8
   m_Name: SpecialWeapon
   m_TagString: Untagged
@@ -166,24 +166,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114087318858802220
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956295199703538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0059cfdba0be1bd4082c9666087c0091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cooldownTime: 0.1
-  _projectilePrefab: {fileID: 114088663366416032, guid: c0247a85493bbc54a8f47a7a2c9dbd81,
-    type: 2}
-  activetedWeapons: 1
-  isSpecialWeapon: 1
-  isNormallWeapon: 0
-  _activeTimeSpecial: 5
 --- !u!114 &114424145550368818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,6 +225,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldownTime: 0.1
+  _projectilePrefab: {fileID: 114088663366416032, guid: c0247a85493bbc54a8f47a7a2c9dbd81,
+    type: 2}
+  activetedWeapons: 1
+  isSpecialWeapon: 1
+  isNormallWeapon: 0
+  _activeTimeSpecial: 5
+--- !u!114 &114905018720839750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956295199703538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0059cfdba0be1bd4082c9666087c0091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cooldownTime: 1.5
   _projectilePrefab: {fileID: 114088663366416032, guid: c0247a85493bbc54a8f47a7a2c9dbd81,
     type: 2}
   activetedWeapons: 1

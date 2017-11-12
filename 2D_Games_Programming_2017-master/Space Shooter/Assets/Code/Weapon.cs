@@ -11,7 +11,7 @@ namespace SpaceShooter
 		[SerializeField]
 		private Projectile _projectilePrefab;
         [SerializeField]
-        private bool activetedWeapons;
+        public bool activetedWeapons;
         
 
         [SerializeField]
@@ -36,12 +36,11 @@ namespace SpaceShooter
         {
             _timeSinceActivated = 0f;
             activetedWeapons = false;
+            
         }
 
         public bool Shoot()
 		{
-
-
             if (!isSpecialWeapon && isNormallWeapon)
             {
                 if (_isInCooldown )
@@ -68,13 +67,13 @@ namespace SpaceShooter
             }
             Debug.Log(activetedWeapons);
 
-            if (isSpecialWeapon && activetedWeapons)
+            if (isSpecialWeapon && activetedWeapons && !isNormallWeapon)
             {
-                Debug.Log("ammuuu");
                 if (_isInCooldown)
                 {
                     return false;
                 }
+
                 // Get the projectile from the pool and set its position and rotation.
                 Projectile projectile = LevelController.Current.GetProjectile(_owner.UnitType);
                 if (projectile != null)
@@ -87,15 +86,15 @@ namespace SpaceShooter
                     _isInCooldown = true;
                     // We just shot the projectile so time since shot is 0.
                     _timeSinceShot = 0;
+                    _timeSinceActivated = 0;
 
                     return true;
                 }
                 return false;
-
             }
             return false;
-			
-		}
+
+        }
 
 		public bool DisposeProjectile( Projectile projectile )
 		{
@@ -127,12 +126,12 @@ namespace SpaceShooter
         {
             activetedWeapons = state;
             Debug.Log(activetedWeapons);
-            _timeSinceActivated = 0f;
+            
         }
 
         private void WeaponDeActive(bool stateOff)
         {
-            activetedWeapons = stateOff;
+            //activetedWeapons = stateOff;
         }
 	}
 }
