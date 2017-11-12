@@ -92,11 +92,7 @@ namespace SpaceShooter
 
 		public void TakeDamage(int amount)
 		{
-			Health.DecreaseHealth(amount);
-            
-            {
-                AsetaCurrentHealth();
-            }
+			Health.DecreaseHealth(amount);  
 
             if (Health.IsDead)
 			{
@@ -109,7 +105,7 @@ namespace SpaceShooter
 			Destroy(gameObject);
 		}
 
-        public void AsetaCurrentHealth()
+        public void SetupCurrentHealth()
         {
             Debug.Log("TanhetkinenHP" + Health.CurrentHealth);
             GameManager.Instance.SetCurrentHealth(Health.CurrentHealth);

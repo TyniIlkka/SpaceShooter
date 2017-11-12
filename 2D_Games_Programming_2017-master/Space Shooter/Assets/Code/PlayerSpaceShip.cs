@@ -33,9 +33,16 @@ namespace SpaceShooter
 			return new Vector3(horizontalInput, verticalInput);
 		}
 
+        protected override void Awake()
+        {
+            base.Awake();
+            SetupCurrentHealth();
+        }
+
         protected override void Update()
 		{
-			base.Update();            
+			base.Update();
+            SetupCurrentHealth();
 
             if (Input.GetButton(FireButtonName))
 			{
@@ -91,7 +98,7 @@ namespace SpaceShooter
         public void TakeHeal(int amount)
         {
             Health.IncreaseHealth(amount);
-            AsetaCurrentHealth();
+            SetupCurrentHealth();
         }
     }
 }

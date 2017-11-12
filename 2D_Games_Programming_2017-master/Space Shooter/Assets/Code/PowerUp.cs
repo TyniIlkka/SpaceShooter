@@ -4,13 +4,10 @@ using UnityEngine;
 
 namespace SpaceShooter {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PowerUp : MonoBehaviour, IHealProvider {
+    public class PowerUp : MonoBehaviour {
 
-
-        [SerializeField] private int healPower = 50;
         [SerializeField] private int deSpawn = 5;
-
-        public Health health;
+    
         public PlayerSpaceShip player;
 
 
@@ -27,33 +24,16 @@ namespace SpaceShooter {
             }
         }
 	
-	    // Update is called once per frame
+	    
 	    void Update () {
-            Destroy(gameObject, deSpawn);
+            Destroy(gameObject, deSpawn);   //DeSpawns PowwerUp after deSpawn seconds.
         }
 
-        protected void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            IHealReceiver healReceiver = other.GetComponent<IHealReceiver>();
-            if (healReceiver != null)
-            {
-                Debug.Log("Hit a heal receiver.");
-                healReceiver.TakeHeal(GetHeal());
-                Destroy(gameObject);
-                    
-            }
-            //TODO: Add to GameOpjectPool
-            /*if (!_powerUp.DisposePowerUp(this))
-            {
-                Debug.LogError("Could not return the projectile back to pool!");
-                Destroy(gameObject);
-            }*/
-            
+            Destroy(gameObject);
         }
 
-        public int GetHeal()
-        {
-            return healPower;
-        }
+        
     }
 }

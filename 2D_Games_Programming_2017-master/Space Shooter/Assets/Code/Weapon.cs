@@ -7,11 +7,16 @@ namespace SpaceShooter
 	public class Weapon : MonoBehaviour
 	{
 		[SerializeField]
-		private float _cooldownTime = 0.5f;
+		private float _cooldownTime = 1.5f;
 		[SerializeField]
 		private Projectile _projectilePrefab;
+        [SerializeField]
+        private bool activetedWeapons = false;
+        [SerializeField]
+        public bool isSpecialWeapon = false;
 
-		private float _timeSinceShot = 0;
+
+        private float _timeSinceShot = 0;
 		private bool _isInCooldown = false;
 		private SpaceShipBase _owner;
 
@@ -22,28 +27,56 @@ namespace SpaceShooter
 		
 		public bool Shoot()
 		{
-			if(_isInCooldown)
-			{
-				return false;
-			}
+            if (!isSpecialWeapon)
+            {
+                if (_isInCooldown )
+                {
+                    return false;
+                }
+
+                // Get the projectile from the pool and set its position and rotation.
+                Projectile projectile = LevelController.Current.GetProjectile(_owner.UnitType);
+                if (projectile != null)
+                {
+                    projectile.transform.position = transform.position;
+                    projectile.transform.rotation = transform.rotation;
+                    projectile.Launch(this, transform.up);
+
+                    // Go to the cooldown phase.
+                    _isInCooldown = true;
+                    // We just shot the projectile so time since shot is 0.
+                    _timeSinceShot = 0;
+
+                    return true;
+                }
+                return false;
+            }
+            if (isSpecialWeapon && activetedWeapons)
+            {
+                if (_isInCooldown)
+                {
+                    return false;
+                }
+                // Get the projectile from the pool and set its position and rotation.
+                Projectile projectile = LevelController.Current.GetProjectile(_owner.UnitType);
+                if (projectile != null)
+                {
+                    projectile.transform.position = transform.position;
+                    projectile.transform.rotation = transform.rotation;
+                    projectile.Launch(this, transform.up);
+
+                    // Go to the cooldown phase.
+                    _isInCooldown = true;
+                    // We just shot the projectile so time since shot is 0.
+                    _timeSinceShot = 0;
+
+                    return true;
+                }
+                return false;
+
+            }
+            return false;
 			
-			// Get the projectile from the pool and set its position and rotation.
-			Projectile projectile = LevelController.Current.GetProjectile(_owner.UnitType);
-			if(projectile != null)
-			{
-				projectile.transform.position = transform.position;
-				projectile.transform.rotation = transform.rotation;
-				projectile.Launch(this, transform.up);
-
-				// Go to the cooldown phase.
-				_isInCooldown = true;
-				// We just shot the projectile so time since shot is 0.
-				_timeSinceShot = 0;
-
-				return true;
-			}
-
-			return false;
 		}
 
 		public bool DisposeProjectile( Projectile projectile )
@@ -51,7 +84,7 @@ namespace SpaceShooter
 			return LevelController.Current.ReturnProjectile(_owner.UnitType, projectile);
 		}
 		
-		void Update()
+		protected virtual void Update()
 		{
 			if(_isInCooldown)
 			{
