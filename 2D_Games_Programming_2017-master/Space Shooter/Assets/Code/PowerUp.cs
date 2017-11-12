@@ -27,13 +27,6 @@ namespace SpaceShooter {
 	    
 	    void Update () {
             Destroy(gameObject, deSpawn);   //DeSpawns PowwerUp after deSpawn seconds.
-        }
-
-        protected virtual void OnTriggerEnter2D(Collider2D other)
-        {
-            Destroy(gameObject);
-        }
-
-        
+        }        
     }
 }

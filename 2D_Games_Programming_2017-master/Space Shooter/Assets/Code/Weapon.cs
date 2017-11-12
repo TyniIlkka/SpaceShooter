@@ -14,9 +14,15 @@ namespace SpaceShooter
         private bool activetedWeapons = false;
         [SerializeField]
         public bool isSpecialWeapon = false;
+        [SerializeField]
+        public bool isNormallWeapon = false;
+        [SerializeField]
+        private float _activeTimeSpecial = 5f;
 
+        private float _timeSinceActivated = 0f;
+        
 
-        private float _timeSinceShot = 0;
+        private float _timeSinceShot = 0f;
 		private bool _isInCooldown = false;
 		private SpaceShipBase _owner;
 
@@ -27,7 +33,7 @@ namespace SpaceShooter
 		
 		public bool Shoot()
 		{
-            if (!isSpecialWeapon)
+            if (!isSpecialWeapon && isNormallWeapon)
             {
                 if (_isInCooldown )
                 {
@@ -51,8 +57,9 @@ namespace SpaceShooter
                 }
                 return false;
             }
-            if (isSpecialWeapon && activetedWeapons)
+            if (isSpecialWeapon && activetedWeapons && !isNormallWeapon)
             {
+                Debug.Log("ammuuu");
                 if (_isInCooldown)
                 {
                     return false;
@@ -94,6 +101,22 @@ namespace SpaceShooter
 					_isInCooldown = false;
 				}
 			}
+
+            if (activetedWeapons)
+            {
+                _timeSinceActivated += Time.deltaTime;
+                if(_timeSinceActivated >= _activeTimeSpecial)
+                {
+                    activetedWeapons = false;
+                }
+            }
 		}
+
+        public void WeaponActivate(bool state)
+        {
+            Debug.Log("PaaseekoTanne?" + state);
+            activetedWeapons = state;
+            _timeSinceActivated = 0;
+        }
 	}
 }

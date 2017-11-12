@@ -10,6 +10,7 @@ namespace SpaceShooter
 		public const string HorizontalAxis = "Horizontal";
 		public const string VerticalAxis = "Vertical";
 		public const string FireButtonName = "Fire1";
+        public const string HealButton = "q";
 
         private int health;
         [SerializeField]
@@ -97,6 +98,7 @@ namespace SpaceShooter
 
         public void TakeHeal(int amount)
         {
+            Debug.Log("otetaanko edes?");
             Health.IncreaseHealth(amount);
             SetupCurrentHealth();
         }

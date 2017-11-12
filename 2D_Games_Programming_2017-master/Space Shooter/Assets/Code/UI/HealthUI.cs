@@ -18,18 +18,15 @@ namespace SpaceShooter.UI
 
         private void Update()
         {
-            int testi = CurrentHealth(GameManager.Instance.CurrentHealth);
-            Debug.Log(testi+ " testi");
+            CurrentHealth(GameManager.Instance.CurrentHealth);
         }
         
-        private int CurrentHealth(int amount)
+        private void CurrentHealth(int amount)
         {
-            Debug.Log(amount);
             if (_currentHealth != null)
             {
                 _currentHealth.text = "Health: " + amount;
             }
-            return amount;
         }
     }
 }

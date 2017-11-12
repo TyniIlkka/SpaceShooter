@@ -107,7 +107,6 @@ namespace SpaceShooter
 
         public void SetupCurrentHealth()
         {
-            Debug.Log("TanhetkinenHP" + Health.CurrentHealth);
             GameManager.Instance.SetCurrentHealth(Health.CurrentHealth);
         }
     }

@@ -180,6 +180,10 @@ MonoBehaviour:
   _cooldownTime: 0.5
   _projectilePrefab: {fileID: 114088663366416032, guid: 1506f81689cf570428e2f0f2df59b795,
     type: 2}
+  activetedWeapons: 0
+  isSpecialWeapon: 0
+  isNormallWeapon: 1
+  _activeTimeSpecial: 5
 --- !u!114 &114125060664549120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,7 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6298f692c13aa419531574b5c7f5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabToSpawn: {fileID: 1866482213846878, guid: 55b973607531dbe46bec0ed5780f1b64,
+  _healthPowerToSpawn: {fileID: 1866482213846878, guid: 55b973607531dbe46bec0ed5780f1b64,
+    type: 2}
+  _weaponPowerToSpawn: {fileID: 1479919487941520, guid: 93f2937120f99bb499e1d4fb4803376b,
     type: 2}
 --- !u!114 &114450907823425910
 MonoBehaviour:
@@ -209,6 +215,7 @@ MonoBehaviour:
   _score: 20
   powerUps: {fileID: 114716259977230924, guid: 55b973607531dbe46bec0ed5780f1b64, type: 2}
   _powerUpSpawner: {fileID: 114125060664549120}
+  changeToDrop: 30
 --- !u!114 &114781704399478684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,6 +245,10 @@ MonoBehaviour:
   _cooldownTime: 0.5
   _projectilePrefab: {fileID: 114088663366416032, guid: 1506f81689cf570428e2f0f2df59b795,
     type: 2}
+  activetedWeapons: 0
+  isSpecialWeapon: 0
+  isNormallWeapon: 1
+  _activeTimeSpecial: 0
 --- !u!212 &212510866591295484
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4605581472092322}
   - component: {fileID: 212552923727399270}
-  - component: {fileID: 114716259977230924}
+  - component: {fileID: 114373793943371906}
   - component: {fileID: 58846640372088902}
   - component: {fileID: 50182458637469816}
   m_Layer: 13
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1866482213846878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.35, y: 0.49, z: 0}
+  m_LocalPosition: {x: -9.40775, y: -0.46624026, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,13 +72,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.28
---- !u!114 &114716259977230924
+--- !u!114 &114373793943371906
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,12 +86,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1866482213846878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700761a1b069827448637e08bc3b7c4c, type: 3}
+  m_Script: {fileID: 11500000, guid: f265712d7e9c1e9419891ed411d9cdb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deSpawn: 5
+  player: {fileID: 114535164535761890, guid: 6e9c80f559a6431478abb7ce1eac4ab6, type: 2}
   healPower: 50
   health: {fileID: 114424145550368818, guid: 6e9c80f559a6431478abb7ce1eac4ab6, type: 2}
-  player: {fileID: 114535164535761890, guid: 6e9c80f559a6431478abb7ce1eac4ab6, type: 2}
 --- !u!212 &212552923727399270
 SpriteRenderer:
   m_ObjectHideFlags: 1

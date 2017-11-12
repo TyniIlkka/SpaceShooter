@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4220108943303440}
   - component: {fileID: 212597031081087198}
-  - component: {fileID: 114638361274905462}
   - component: {fileID: 50111729029726326}
+  - component: {fileID: 70618864714451802}
+  - component: {fileID: 114755672662680870}
   m_Layer: 13
   m_Name: WeaponPower
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479919487941520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.96, y: -3.22, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,13 +57,28 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.1
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &114638361274905462
+--- !u!70 &70618864714451802
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479919487941520}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.56, y: 2.56}
+  m_Direction: 0
+--- !u!114 &114755672662680870
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -70,11 +86,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1479919487941520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700761a1b069827448637e08bc3b7c4c, type: 3}
+  m_Script: {fileID: 11500000, guid: 684045390994efb48a748d7c66a1900f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deSpawn: 5
   player: {fileID: 114535164535761890, guid: 6e9c80f559a6431478abb7ce1eac4ab6, type: 2}
+  specialWeapon1: {fileID: 114087318858802220, guid: 6e9c80f559a6431478abb7ce1eac4ab6,
+    type: 2}
+  specialWeapon2: {fileID: 114858181690594696, guid: 6e9c80f559a6431478abb7ce1eac4ab6,
+    type: 2}
 --- !u!212 &212597031081087198
 SpriteRenderer:
   m_ObjectHideFlags: 1

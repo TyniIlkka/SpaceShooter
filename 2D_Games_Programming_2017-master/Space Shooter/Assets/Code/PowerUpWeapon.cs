@@ -5,38 +5,43 @@ namespace SpaceShooter {
 
     public class PowerUpWeapon : PowerUp {
 
-
-        private Weapon specialWeapon;
+        [SerializeField] private Weapon specialWeapon1;
+        [SerializeField] private Weapon specialWeapon2;
 
         private void Awake()
         {
-            specialWeapon = player.GetComponent<Weapon>();
-            if (specialWeapon != null)
-            {
-                if (specialWeapon.isSpecialWeapon == false)
-                {
-                    Debug.Log("No special weapons found!");
-                }
-                if (specialWeapon.isSpecialWeapon == true)
-                {
-                    Debug.Log("SpecialWeapon Ready to Activate!");
-                }
-            }
+            
         }
 
-        protected override void OnTriggerEnter2D(Collider2D other)
+        public void OnTriggerEnter2D(Collider2D other)
         {
-            if (specialWeapon.isSpecialWeapon == true)
-            {
-                WeaponActivate();
-            }
-
-            base.OnTriggerEnter2D(other);
+            Debug.Log("Törmäys?");
+            WeaponActivate();
         }
 
         public void WeaponActivate()
         {
-            specialWeapon.activatedWeapons = true;
+            Debug.Log("Törmäys?");
+            //Check is there Special Weapon to activate
+            if (specialWeapon1 != null && specialWeapon2 != null)
+            {
+                if (specialWeapon1.isSpecialWeapon == false && specialWeapon2.isSpecialWeapon == false)
+                {
+                    Debug.Log("Weapons was not special weapon!");
+                }
+                if (specialWeapon1.isSpecialWeapon == true && specialWeapon2.isSpecialWeapon == true)
+                {
+                    specialWeapon1.WeaponActivate(true);
+                    specialWeapon2.WeaponActivate(true);
+                    Debug.Log("SpecialWeapons Ready to Activate!");
+                }
+            }
+            else
+            {
+                Debug.Log("We didn't find SpecialWeapons!");
+                return;
+            }
+            
 
         }
     }

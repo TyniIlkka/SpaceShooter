@@ -90,7 +90,6 @@ namespace SpaceShooter
         public void SetCurrentHealth(int healthAmount)
         {
             CurrentHealth = healthAmount;
-            Debug.Log("Ehkataallajo" + CurrentHealth);
         }
 	}
 }

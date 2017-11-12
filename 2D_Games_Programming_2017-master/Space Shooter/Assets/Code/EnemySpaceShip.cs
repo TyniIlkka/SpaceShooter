@@ -17,8 +17,6 @@ namespace SpaceShooter
         private float randomFloat = 0;
         private GameObject[] _movementTargets;
         private int _currentMovementTargetIndex = 0;
-        [SerializeField]
-        //private GameObject
 
         public Transform CurrentMovementTarget
         {
@@ -113,11 +111,7 @@ namespace SpaceShooter
 
         public void SpawnOrNotToPowerUp()
         {
-            Debug.Log(changeToDrop);
-            
-            Debug.Log(changeToDrop);
             randomFloat = Random.Range(0f, 1f);
-            Debug.Log(randomFloat);
             if (changeToDrop > randomFloat)
             {
                 SpawnPower();
