@@ -10,16 +10,22 @@ namespace SpaceShooter {
 
         private void Awake()
         {
-            
+            specialWeapon1.isSpecialWeapon = true;
+            specialWeapon2.isSpecialWeapon = true;
+        }
+
+        public void Update()
+        {
+
         }
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("Törmäys?");
-            WeaponActivate();
+            ActivateWeapon();
+            Destroy(gameObject);
         }
 
-        public void WeaponActivate()
+        public void ActivateWeapon()
         {
             Debug.Log("Törmäys?");
             //Check is there Special Weapon to activate
@@ -29,11 +35,11 @@ namespace SpaceShooter {
                 {
                     Debug.Log("Weapons was not special weapon!");
                 }
-                if (specialWeapon1.isSpecialWeapon == true && specialWeapon2.isSpecialWeapon == true)
+                if (specialWeapon1.isSpecialWeapon == true || specialWeapon2.isSpecialWeapon == true)
                 {
                     specialWeapon1.WeaponActivate(true);
                     specialWeapon2.WeaponActivate(true);
-                    Debug.Log("SpecialWeapons Ready to Activate!");
+                    Debug.Log("SpecialWeapons should be Activated!");
                 }
             }
             else

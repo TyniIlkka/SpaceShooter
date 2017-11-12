@@ -13,23 +13,7 @@ namespace SpaceShooter
 
         public Health health;
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            //Debug.Log("tamaedes?");
-            //if (Input.GetButtonDown("Fire2"))
-            //{
-            //    Debug.Log("Saati tanne?");
-            //    GetHeal();
-            //}
-        }
-
+        // Activates Healing when hit with player.
         public void OnTriggerEnter2D(Collider2D other)
         {
             IHealReceiver healReceiver = other.GetComponent<IHealReceiver>();

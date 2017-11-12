@@ -8,6 +8,8 @@ namespace SpaceShooter.UI
 {
     public class HealthUI : MonoBehaviour
     {
+        //Health GUI
+        
         [SerializeField]
         private TextMeshProUGUI _currentHealth;
 

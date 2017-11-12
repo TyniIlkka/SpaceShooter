@@ -11,16 +11,17 @@ namespace SpaceShooter
 		[SerializeField]
 		private Projectile _projectilePrefab;
         [SerializeField]
-        private bool activetedWeapons = false;
+        private bool activetedWeapons;
+        
+
         [SerializeField]
-        public bool isSpecialWeapon = false;
+        public bool isSpecialWeapon;
         [SerializeField]
         public bool isNormallWeapon = false;
         [SerializeField]
         private float _activeTimeSpecial = 5f;
 
         private float _timeSinceActivated = 0f;
-        
 
         private float _timeSinceShot = 0f;
 		private bool _isInCooldown = false;
@@ -30,9 +31,17 @@ namespace SpaceShooter
 		{
 			_owner = owner;
 		}
-		
-		public bool Shoot()
+
+        private void Awake()
+        {
+            _timeSinceActivated = 0f;
+            activetedWeapons = false;
+        }
+
+        public bool Shoot()
 		{
+
+
             if (!isSpecialWeapon && isNormallWeapon)
             {
                 if (_isInCooldown )
@@ -57,7 +66,9 @@ namespace SpaceShooter
                 }
                 return false;
             }
-            if (isSpecialWeapon && activetedWeapons && !isNormallWeapon)
+            Debug.Log(activetedWeapons);
+
+            if (isSpecialWeapon && activetedWeapons)
             {
                 Debug.Log("ammuuu");
                 if (_isInCooldown)
@@ -91,7 +102,7 @@ namespace SpaceShooter
 			return LevelController.Current.ReturnProjectile(_owner.UnitType, projectile);
 		}
 		
-		protected virtual void Update()
+		void Update()
 		{
 			if(_isInCooldown)
 			{
@@ -105,18 +116,23 @@ namespace SpaceShooter
             if (activetedWeapons)
             {
                 _timeSinceActivated += Time.deltaTime;
-                if(_timeSinceActivated >= _activeTimeSpecial)
+                if (_timeSinceActivated >= _activeTimeSpecial)
                 {
-                    activetedWeapons = false;
+                    WeaponDeActive(false);
                 }
             }
-		}
-
+        }
+        //Tries activate Weapon PowerUp
         public void WeaponActivate(bool state)
         {
-            Debug.Log("PaaseekoTanne?" + state);
             activetedWeapons = state;
-            _timeSinceActivated = 0;
+            Debug.Log(activetedWeapons);
+            _timeSinceActivated = 0f;
+        }
+
+        private void WeaponDeActive(bool stateOff)
+        {
+            activetedWeapons = stateOff;
         }
 	}
 }
